@@ -1,5 +1,7 @@
 import pygame
 
+from models.Player import Player
+
 
 class Game:
     """
@@ -32,6 +34,7 @@ class Game:
 
         self.running = True
         self.clock = pygame.time.Clock()
+        self.player = Player(0, 0)
 
     def run(self):
         while self.running:
@@ -45,7 +48,8 @@ class Game:
             self.screen.fill((0, 0, 0))
 
             # Mettre ici le code pour dessiner les éléments du jeu
-
+            self.player.update()
+            self.player.draw(self.screen)
             pygame.display.flip()
             self.clock.tick(FPS)
 
